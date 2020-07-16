@@ -26,4 +26,8 @@
   [data-noaccounts='true'] {
     background-color: red;
   }
+
+  [data-ishighlighted='true'], [data-selected='true']  {
+    background-color: rgb(141, 148, 207);
+  }
 }
