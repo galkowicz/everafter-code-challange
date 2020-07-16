@@ -1,10 +1,11 @@
 .table {
-  padding-top: 3rem;
+  padding: 2rem 0;
 
   &__header {
     .table-row {
       th {
         text-align: unset;
+        background-color: #e6e6e6;
         &:first-child {
           text-transform: uppercase;
         }
@@ -17,7 +18,7 @@
     td,
     th {
       text-transform: capitalize;
-      border: 1px solid black;
+      border: 0.5px solid black;
       width: 10%;
       padding: 0.4rem;
     }
@@ -27,7 +28,8 @@
     background-color: red;
   }
 
-  [data-ishighlighted='true'], [data-selected='true']  {
+  [data-ishighlighted='true'],
+  [data-selected='true'] {
     background-color: rgb(141, 148, 207);
   }
 }
