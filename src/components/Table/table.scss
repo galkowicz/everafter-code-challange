@@ -1,0 +1,29 @@
+.table {
+  padding-top: 3rem;
+
+  &__header {
+    .table-row {
+      th {
+        text-align: unset;
+        &:first-child {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .table-row {
+    cursor: default;
+    td,
+    th {
+      text-transform: capitalize;
+      border: 1px solid black;
+      width: 10%;
+      padding: 0.4rem;
+    }
+  }
+
+  [data-noaccounts='true'] {
+    background-color: red;
+  }
+}

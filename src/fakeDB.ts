@@ -1,17 +1,17 @@
-interface Manager {
+export interface Manager {
   id: string
   name: string
   manager: string | null
 }
 
-interface Account {
+export interface Account {
   id: string
   name: string
   accountManager: string
   status: Status
 }
 
-enum Status {
+export enum Status {
   active = 'ACTIVE',
   closed = 'CLOSED',
 }
