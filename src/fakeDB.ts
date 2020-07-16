@@ -1,7 +1,7 @@
 interface Manager {
   id: string
   name: string
-  manager?: string
+  manager: string | null
 }
 
 interface Account {
@@ -17,12 +17,12 @@ enum Status {
 }
 
 const managers: Manager[] = [
-  { id: '1', name: 'alice' },
+  { id: '1', name: 'alice', manager: null },
   { id: '2', name: 'bob', manager: 'alice' },
   { id: '3', name: 'charlie', manager: 'alice' },
   { id: '4', name: 'dave', manager: 'bob' },
   { id: '5', name: 'eve', manager: 'charlie' },
-  { id: '6', name: 'frank' },
+  { id: '6', name: 'frank', manager: null },
   { id: '7', name: 'grace', manager: 'ivan' },
   { id: '8', name: 'heidi', manager: 'alice' },
   { id: '9', name: 'ivan', manager: 'bob' },
