@@ -1,8 +1,8 @@
 import React from 'react'
 import './table.scss'
 
-interface TableData {
-  data: { id: string }
+export interface TableData {
+  data: { id: string, name?: string }
   [metadata: string]: any
 }
 
