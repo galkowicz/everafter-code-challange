@@ -8,7 +8,6 @@ interface TableData {
 
 type Props = {
   tableData: TableData[]
-  tableColumns: string[]
   onRowClick?(rowId: string): void
 }
 
@@ -18,7 +17,7 @@ const metadataToCustomAttributes = (metadata: any) => {
   }, {})
 }
 
-const Table: React.FC<Props> = ({ tableData = [], tableColumns = [], onRowClick = () => null }) => {
+const Table: React.FC<Props> = ({ tableData = [], onRowClick = () => null }) => {
   const handleRowClick = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
     onRowClick(e.currentTarget.id)
   }
@@ -27,7 +26,7 @@ const Table: React.FC<Props> = ({ tableData = [], tableColumns = [], onRowClick 
     <table className="table" cellPadding="0" cellSpacing="0">
       <thead className="table__header">
         <tr className="table-row">
-          {tableColumns.map((item) => (
+          {Object.keys(tableData[0].data).map((item) => (
             <th key={item}>{item}</th>
           ))}
         </tr>

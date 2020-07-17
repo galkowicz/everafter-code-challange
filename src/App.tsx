@@ -20,10 +20,10 @@ function App() {
   return (
     <div className="App container">
       <div className="managers">
-        <Table tableData={paredManagers} tableColumns={['id', 'name', 'manager']} onRowClick={handleManagerClick} />
+        <Table tableData={paredManagers} onRowClick={handleManagerClick} />
       </div>
       <div className="accounts">
-        <Table tableData={paredAccounts} tableColumns={['id', 'name', 'account manager', 'status']} />
+        <Table tableData={paredAccounts} />
       </div>
     </div>
   )
