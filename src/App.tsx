@@ -6,35 +6,40 @@ import { managers, accounts } from './fakeDB'
 import { parseAccountsData, parseManagersData, findAllEmployeesOfManager, getManagerById } from './util'
 
 function App() {
-  const [paredManagers, setManagers] = React.useState(parseManagersData(managers, accounts, ''))
-  const [paredAccounts, setAccounts] = React.useState(parseAccountsData(accounts, [], ''))
+  const [appManagers, setAppManagers] = React.useState(managers)
+  const [appAccounts, setAppAccounts] = React.useState(accounts)
+  const [selectedManager, setSelectedManager] = React.useState('')
+  const [managerEmployees, setManagerEmployees] = React.useState([''])
 
   const handleManagerClick = (managerId: string) => {
-    // TODO change state to use unparsed lists
     const selectedManager = getManagerById(managerId, managers)
     const { name } = selectedManager || { name: '' }
     const managerEmployees = findAllEmployeesOfManager([name], managers)
 
-    setAccounts(parseAccountsData(accounts, managerEmployees, name))
-    setManagers(parseManagersData(managers, accounts, name))
+    setSelectedManager(name)
+    setManagerEmployees(managerEmployees)
   }
 
   const handleAddNewManager = (id: string, name: string, managersName: string) => {
     const newManagerObject = {
-      data: { id, name, manager: managersName },
-      metadata: { noaccounts: true, selected: false },
+      id,
+      name,
+      manager: managersName,
     }
-    setManagers([...paredManagers, newManagerObject])
+    setAppManagers([...appManagers, newManagerObject])
   }
+
+  const parsedManagers = parseManagersData(appManagers, appAccounts, selectedManager)
+  const parsedAccounts = parseAccountsData(appAccounts, managerEmployees, selectedManager)
 
   return (
     <div className="App container">
       <div className="managers">
-        <Table tableData={paredManagers} onRowClick={handleManagerClick} />
-        <ManagersForm tableData={paredManagers} onNewManager={handleAddNewManager} />
+        <Table tableData={parsedManagers} onRowClick={handleManagerClick} />
+        <ManagersForm tableData={parsedManagers} onNewManager={handleAddNewManager} />
       </div>
       <div className="accounts">
-        <Table tableData={paredAccounts} />
+        <Table tableData={parsedAccounts} />
       </div>
     </div>
   )
