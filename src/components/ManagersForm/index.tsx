@@ -1,19 +1,21 @@
 import React from 'react'
 import './managersForm.scss'
 
+import Dropdown from '../Dropdown'
+
 import { TableData } from '../Table'
 
 type Props = {
-  tableData: TableData[]
+  managersData: TableData[]
   onNewManager?(id: string, name: string, managersName: string): void
 }
 
-const ManagersForm: React.FC<Props> = ({ tableData = [], onNewManager = () => null }) => {
+const ManagersForm: React.FC<Props> = ({ managersData = [], onNewManager = () => null }) => {
   const [name, setName] = React.useState('')
   const [selectedManager, setSelectedManager] = React.useState('')
 
-  const nextId = tableData.length + 1
-  const existingManagers = ['', ...tableData.map((item) => item.data.name)]
+  const nextId = managersData.length + 1
+  const existingManagers = ['', ...managersData.map((item) => item.data.name)]
 
   const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value)
@@ -29,25 +31,24 @@ const ManagersForm: React.FC<Props> = ({ tableData = [], onNewManager = () => nu
     }
   }
 
-  // TODO extract select to it's own component
-  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
-    setSelectedManager(e.currentTarget.value)
+  const handleSelectChange = (selected: string) => {
+    setSelectedManager(selected)
   }
 
   return (
     <div className="add-manager container">
       <div className="new-id">{nextId}</div>
       <div className="new-name">
-        <input type="text" onChange={handleNameChange} value={name} />
+        <input placeholder="Manager" type="text" onChange={handleNameChange} value={name} />
       </div>
       <div className="managers">
-        <select name="managers" id="manager-select" onChange={handleSelectChange}>
-          {existingManagers.map((manager) => (
-            <option key={manager} value={manager}>
-              {manager}
-            </option>
-          ))}
-        </select>
+        <Dropdown
+          modifier="managers"
+          options={existingManagers}
+          defaultValue={selectedManager}
+          placeholder="--Please choose a manager--"
+          onSelect={handleSelectChange}
+        />
       </div>
       <div className="submit">
         <button onClick={handleSubmit}>Add</button>

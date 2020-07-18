@@ -1,8 +1,11 @@
 import React from 'react'
 import './App.scss'
+
 import Table from './components/Table'
 import ManagersForm from './components/ManagersForm'
-import { managers, accounts } from './fakeDB'
+import AccountsForm from './components/AccountsForm'
+
+import { managers, accounts, Status } from './fakeDB'
 import { parseAccountsData, parseManagersData, findAllEmployeesOfManager, getManagerById } from './util'
 
 function App() {
@@ -29,6 +32,17 @@ function App() {
     setAppManagers([...appManagers, newManagerObject])
   }
 
+  const handleAddNewAccount = (id: string, name: string, managersName: string, isActive: boolean) => {
+    const status = isActive ? Status.active : Status.closed
+    const newAccountObject = {
+      id,
+      name,
+      accountManager: managersName,
+      status,
+    }
+    setAppAccounts([...appAccounts, newAccountObject])
+  }
+
   const parsedManagers = parseManagersData(appManagers, appAccounts, selectedManager)
   const parsedAccounts = parseAccountsData(appAccounts, managerEmployees, selectedManager)
 
@@ -36,10 +50,11 @@ function App() {
     <div className="App container">
       <div className="managers">
         <Table tableData={parsedManagers} onRowClick={handleManagerClick} />
-        <ManagersForm tableData={parsedManagers} onNewManager={handleAddNewManager} />
+        <ManagersForm managersData={parsedManagers} onNewManager={handleAddNewManager} />
       </div>
       <div className="accounts">
         <Table tableData={parsedAccounts} />
+        <AccountsForm managersData={parsedManagers} accountsData={parsedAccounts} onNewAccount={handleAddNewAccount} />
       </div>
     </div>
   )
