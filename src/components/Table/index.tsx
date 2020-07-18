@@ -23,7 +23,7 @@ const Table: React.FC<Props> = ({ tableData = [], onRowClick = () => null }) => 
   }
 
   return (
-    <table className="table" cellPadding="0" cellSpacing="0">
+    <table className="table container" cellPadding="0" cellSpacing="0">
       <thead className="table__header">
         <tr className="table-row">
           {Object.keys(tableData[0].data).map((item) => (

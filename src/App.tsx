@@ -48,11 +48,11 @@ function App() {
 
   return (
     <div className="App container">
-      <div className="managers">
+      <div className="managers container">
         <Table tableData={parsedManagers} onRowClick={handleManagerClick} />
         <ManagersForm managersData={parsedManagers} onNewManager={handleAddNewManager} />
       </div>
-      <div className="accounts">
+      <div className="accounts container">
         <Table tableData={parsedAccounts} />
         <AccountsForm managersData={parsedManagers} accountsData={parsedAccounts} onNewAccount={handleAddNewAccount} />
       </div>
