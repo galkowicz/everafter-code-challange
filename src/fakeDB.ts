@@ -35,12 +35,12 @@ const accounts: Account[] = [
   { id: '4', name: 'mySpace', accountManager: 'eve', status: Status.closed },
   { id: '5', name: 'united', accountManager: 'dave', status: Status.active },
   { id: '6', name: 'facebook', accountManager: 'bob', status: Status.active },
-  { id: '8', name: 'amazon', accountManager: 'bob', status: Status.closed },
-  { id: '9', name: 'monday', accountManager: 'heidi', status: Status.closed },
-  { id: '10', name: 'gm', accountManager: 'bob', status: Status.active },
-  { id: '11', name: 'britishAirways', accountManager: 'frank', status: Status.active },
-  { id: '12', name: 'apple', accountManager: 'frank', status: Status.active },
-  { id: '13', name: 'microsoft', accountManager: 'ivan', status: Status.closed },
+  { id: '7', name: 'amazon', accountManager: 'bob', status: Status.closed },
+  { id: '8', name: 'monday', accountManager: 'heidi', status: Status.closed },
+  { id: '9', name: 'gm', accountManager: 'bob', status: Status.active },
+  { id: '10', name: 'britishAirways', accountManager: 'frank', status: Status.active },
+  { id: '11', name: 'apple', accountManager: 'frank', status: Status.active },
+  { id: '12', name: 'microsoft', accountManager: 'ivan', status: Status.closed },
 ]
 
 export { managers, accounts }
