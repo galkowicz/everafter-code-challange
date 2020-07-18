@@ -15,9 +15,9 @@ function App() {
   const [managerEmployees, setManagerEmployees] = React.useState([''])
 
   const handleManagerClick = (managerId: string) => {
-    const selectedManager = getManagerById(managerId, managers)
+    const selectedManager = getManagerById(managerId, appManagers)
     const { name } = selectedManager || { name: '' }
-    const managerEmployees = findAllEmployeesOfManager([name], managers)
+    const managerEmployees = findAllEmployeesOfManager([name], appManagers)
 
     setSelectedManager(name)
     setManagerEmployees(managerEmployees)

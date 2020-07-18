@@ -15,7 +15,7 @@ const ManagersForm: React.FC<Props> = ({ managersData = [], onNewManager = () =>
   const [selectedManager, setSelectedManager] = React.useState('')
 
   const nextId = managersData.length + 1
-  const existingManagers = ['', ...managersData.map((item) => item.data.name)]
+  const existingManagers = [...managersData.map((item) => item.data.name)]
 
   const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value)
